@@ -12,3 +12,9 @@ html, body {
 	margin: auto;
 	width: 300px;
 }
+
+.btn-xl {
+	padding: 18px 28px !important;
+	font-size: 22px !important;
+	border-radius: 8px !important;
+}
