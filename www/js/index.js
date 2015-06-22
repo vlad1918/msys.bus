@@ -43,8 +43,8 @@ var app = {
     	
     	//Set i18n for button labels
     	setTimeout(function() {    		
-    		$("#btnToWork b").html(" " + LANG.btn_going_to_work);
-    		$("#btnFromWork b").html(" " + LANG.btn_back_from_work);
+    		$("#btnToWork b").text(" " + LANG.btn_going_to_work);
+    		$("#btnFromWork b").text(" " + LANG.btn_back_from_work);
     		$("#btnTimetable b").text(" " + LANG.btn_timetable);    	
     	}, 100);
     	
@@ -58,24 +58,47 @@ var app = {
     		createBusesView(false);
     	});
     	
+    	//Handler for clicking on btnTimetable button 
+    	$("#btnTimetable").click(function() {
+    		$("#btnToWorkMonThu b").text(" " + LANG.btn_to_work_mon_thu);
+    		$("#btnToWorkFri b").text(" " + LANG.btn_to_work_fri);
+    		$("#btnFromWorkMonThu b").text(" " + LANG.btn_from_work_mon_thu);
+    		$("#btnFromWorkFri b").text(" " + LANG.btn_from_work_fri);
+    		$("#mainView").hide();
+    		$("#selectView").show();
+    	});
+    	
+    	//Handler for clicking on btnToWorkMonThu button 
+    	$("#btnToWorkMonThu").click(function() {
+    		createBusesView(true, MON_THU);
+    	});
+
+    	//Handler for clicking on btnToWorkFri button 
+    	$("#btnToWorkFri").click(function() {
+    		createBusesView(true, FRIDAY);
+    	});
+    	
+    	//Handler for clicking on btnFromWorkMonThu button 
+    	$("#btnFromWorkMonThu").click(function() {
+    		createBusesView(false, MON_THU);
+    	});
+
+    	//Handler for clicking on btnFromWorkFri button 
+    	$("#btnFromWorkFri").click(function() {
+    		createBusesView(false, FRIDAY);
+    	});
+
+    	//Handler for clicking on btnBack button 
+    	$(".btnBack").click(function() {
+    		goBack();
+    	});
+    	
     },
     
     // back button Event Handler
     //
     onBackButton: function() {   	
-    	if ($("#mainView").is(":visible")) { //pressing back on mainView results in killing the application
-    		navigator.app.exitApp();
-    	}
-    	
-    	if ($("#busesView").is(":visible")) { //busesView is the child of mainView
-    		$("#busesView").hide();
-    		$("#mainView").show();
-    	}
-    	
-    	if ($("#selectView").is(":visible")) { //selectView is the child of mainView
-    		$("#selectView").hide();
-    		$("#mainView").show();
-    	}
+    	goBack();
     },
     
     // resume event handler
@@ -90,16 +113,20 @@ var app = {
 /**
  * Creates the buses view
  * @param isGoingToWork boolean
+ * @param workDay [optional] FRIDAY or MON_THU
  */
-function createBusesView(isGoingToWork) {
+function createBusesView(isGoingToWork, workDay) {
 	$("#mainView").hide();
-	$("#busesView").empty();
+	$("#selectView").hide();
+	$("#busesView #content").empty();
 	$("#busesView").show();
 	$("#busesView").append("<h4>" + LANG.label_main + "</h4>");
 	
 	var now = new Date();
 	var currentTime = now.getHours() + ":" + now.getMinutes();
-	var workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
+	if (workDay == null) { //if nor provided workDay needs to be calculated 
+		workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
+	}
 	var buses = getBuses(currentTime, isGoingToWork, workDay);
 	var isApproximate = false;
 	
@@ -147,4 +174,23 @@ function createBusView(bus) {
 	main.appendChild(table);
 	
 	return main;
+}
+
+/**
+ * navigates back or exists the application
+ */
+function goBack() {
+	if ($("#mainView").is(":visible")) { //pressing back on mainView results in killing the application
+		navigator.app.exitApp();
+	}
+	
+	if ($("#busesView").is(":visible")) { //busesView is the child of mainView
+		$("#busesView").hide();
+		$("#mainView").show();
+	}
+	
+	if ($("#selectView").is(":visible")) { //selectView is the child of mainView
+		$("#selectView").hide();
+		$("#mainView").show();
+	}
 }
