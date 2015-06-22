@@ -10,6 +10,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('backbutton', this.onBackButton, true);
+        document.addEventListener('resume', this.onResume, true);
     },
     // deviceready Event Handler
     //
@@ -22,7 +23,6 @@ var app = {
     	if (navigator != null && navigator.globalization != null) {   	
 			navigator.globalization.getLocaleName(
 					function (locale) { //If a valid locale exists then this will be executed
-						alert('locale: ' + locale.value + '\n');
 						if (locale.value == 'ro-RO') {
 							LANG = LANG_RO;
 						} else {
@@ -30,25 +30,28 @@ var app = {
 						}
 					},
 					function () { //If a locale doesn't exists then this will be executed
-						alert('Error getting locale1\n');
 						LANG = LANG_EN;
 					}
 			);
-    	} else { //If navigator.globalization doesn't exists then this will be executed
-			alert('Error getting locale\n');
+    	} else { //Hack to make the application work on PC too
 			LANG = LANG_EN;
     	}
     	
-    	//Hide views which are not main
+    	//Hide views which are not the mainView
     	$("#busesView").hide();
     	$("#selectView").hide();
+    	
+    	//Set i18n for button labels
+    	$("#btnToWork b").html(" " + LANG.btn_going_to_work);
+    	$("#btnFromWork b").html(" " + LANG.btn_back_from_work);
+    	$("#btnTimetable b").text(" " + LANG.btn_timetable);
     	
     	//Handler for clicking on btnToWork button 
     	$("#btnToWork").click(function() {
     		$("#mainView").hide();
     		$("#busesView").empty();
     		$("#busesView").show();
-    		$("#busesView").append(LANG.label_main);
+    		$("#busesView").append("<h4>" + LANG.label_main + "</h4>");
     		
     		var now = new Date();
     		var currentTime = now.getHours() + ":" + now.getMinutes();
@@ -68,12 +71,29 @@ var app = {
     onBackButton: function() {
     	alert("back pressed");
     	
-    	if ($("#busesView").is(":visible")) {
-    		$("#busesView").hide();
-    		$("#mainView").hide();
+    	if ($("#mainView").is(":visible")) { //pressing back on mainView results in killing the application
+    		navigator.app.exitApp();
     	}
-    }
+    	
+    	if ($("#busesView").is(":visible")) { //busesView is the child of mainView
+    		$("#busesView").hide();
+    		$("#mainView").show();
+    	}
+    	
+    	if ($("#selectView").is(":visible")) { //selectView is the child of mainView
+    		$("#selectView").hide();
+    		$("#mainView").show();
+    	}
+    },
     
+    // resume event handler
+    //
+    onResume: function() {
+    	alert("onResume");
+		$("#busesView").hide();
+		$("#selectView").hide();
+		$("#mainView").show();
+    },
 };
 
 /**
