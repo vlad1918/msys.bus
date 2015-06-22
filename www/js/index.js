@@ -24,7 +24,6 @@ var app = {
 			navigator.globalization.getLocaleName(
 					function (locale) { //If a valid locale exists then this will be executed
 						if (locale.value == 'ro-RO') {
-							alert("ro");
 							LANG = LANG_RO;
 						} else {
 							LANG = LANG_EN;
