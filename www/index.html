@@ -11,22 +11,37 @@
         <title>Metro Systems Shuttle Bus</title>
     </head>
     <body class="vertical-center">
-    <table class="mainTable">
+    <!-- Main View -->
+    <table id="mainView">
     	<tr>
     		<td>
-				<div class="container">
-					<div class="main">
-						<button type="button" id="btnToWork" class="btn btn-xl btn-danger btn-block"><span class="glyphicon glyphicon-briefcase"></span> Going to work</button>
-						<button type="button" id="btnFromWork" class="btn btn-success btn-xl btn-block"><span class="glyphicon glyphicon-home"></span> Back from work</button>		
-						<button type="button" id="btnTimetable" class="btn btn-default btn-xl btn-block"><span class="glyphicon glyphicon-time"></span>  Whole timetable</button>
-					</div>
+				<div class="lat">
+					<button type="button" id="btnToWork" class="btn btn-xl btn-danger btn-block"><span class="glyphicon glyphicon-briefcase"></span> Going to work</button>
+					<button type="button" id="btnFromWork" class="btn btn-success btn-xl btn-block"><span class="glyphicon glyphicon-home"></span> Back from work</button>		
+					<button type="button" id="btnTimetable" class="btn btn-default btn-xl btn-block"><span class="glyphicon glyphicon-time"></span>  Whole timetable</button>
 				</div>
 			</td>
 		</tr>
 	</table>
+	<!-- /Main View -->
+	<!-- Buses View -->
+	<div id="busesView" class="container">
+	</div>
+	<!-- /Buses View -->
+	<!-- Select View -->
+    <table id="selectView">
+    	<tr>
+    		<td>
+				<div class="container">
+				</div>
+			</td>
+		</tr>
+	</table>	
+	<!-- /Select View -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/db.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
