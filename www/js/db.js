@@ -2,19 +2,6 @@
  * Database for the buses
  */
 
-
-/*** Constants ***/
-//BusTypeEnum
-MINI_BUS = "MINI_BUS";
-BIG_BUS = "BIG_BUS";
-//WorkDayEnum
-MON_THU = "MON_THU";
-FRIDAY = "FRIDAY";
-//StationEnum
-METRO_SYSTEMS = "METRO_SYSTEMS";
-AUREL_VLAICU = "AUREL_VLAICU";
-PIPERA = "PIPERA";
-
 /*** Create arrays for all available buses ***/
 
 //Buses to work MON-THU

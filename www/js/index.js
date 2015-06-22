@@ -16,6 +16,28 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
+    	//Initialize the LANG array depending on the locale
+    	LANG = {};
+    	if (navigator != null && navigator.globalization != null) {   	
+			navigator.globalization.getLocaleName(
+					function (locale) { //If a valid locale exists then this will be executed
+						alert('locale: ' + locale.value + '\n');
+						if (locale.value == 'ro_RO') {
+							LANG = LANG_RO;
+						} else {
+							LANG = LANG_EN;
+						}
+					},
+					function () { //If a locale doesn't exists then this will be executed
+						alert('Error getting locale\n');
+						LANG = LANG_EN;
+					}
+			);
+    	} else { //If navigator.globalization doesn't exists then this will be executed
+			alert('Error getting locale\n');
+			LANG = LANG_EN;
+    	}
+    	
     	//Hide views which are not main
     	$("#busesView").hide();
     	$("#selectView").hide();
@@ -46,18 +68,29 @@ var app = {
  */
 function createBusView(bus) {
 	var main = document.createElement("div");
-	main.className = "well"; 
+	main.className = "well well-sm marginBtmSmall"; 
 	
+	var table = document.createElement("table");
+	var tr = document.createElement("tr");
+	
+	var tdTime = document.createElement("td");
+	tdTime.className = "busTime"
+	tdTime.innerHTML = bus.time;	
+	tr.appendChild(tdTime);
+	
+	var tdImg = document.createElement("td");
 	var img = document.createElement("img");
 	img.src = "img/mini_bus.png"
+	tdImg.appendChild(img);
+	tr.appendChild(tdImg);
 	
-	var time = document.createElement("span");
-	time.className = "big"
-	time.innerHTML = bus.time;	
+	var tdLegend = document.createElement("td");
+	tdLegend.className = "busLegend";
+	tdLegend.innerHTML = LANG.legend_part_1 + " " + bus.startStation + " " + LANG.legend_part_2 + " " + bus.endStation;	
+	tr.appendChild(tdLegend);
 		
-		
-	main.appendChild(img);
-	main.appendChild(time);
+	table.appendChild(tr);
+	main.appendChild(table);
 	
 	return main;
 }

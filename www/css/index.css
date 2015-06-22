@@ -18,6 +18,16 @@ html, body {
 	border-radius: 8px !important;
 }
 
-.big {
-	font-size: 30px;
+.busTime {
+	padding-right: 5px;
+	font-size: 36px;
+}
+
+.busLegend {
+	width: 100%;
+	padding-left: 5px;
+}
+
+.marginBtmSmall {
+	margin-bottom: 5px !important;
 }
