@@ -43,35 +43,27 @@ var app = {
     	$("#selectView").hide();
     	
     	//Set i18n for button labels
-    	$("#btnToWork b").html(" " + LANG.btn_going_to_work);
-    	$("#btnFromWork b").html(" " + LANG.btn_back_from_work);
-    	setTimeout(function() {$("#btnTimetable b").text(" " + LANG.btn_timetable);}, 3000);    	
+    	setTimeout(function() {    		
+    		$("#btnToWork b").html(" " + LANG.btn_going_to_work);
+    		$("#btnFromWork b").html(" " + LANG.btn_back_from_work);
+    		$("#btnTimetable b").text(" " + LANG.btn_timetable);    	
+    	}, 100);
     	
     	//Handler for clicking on btnToWork button 
     	$("#btnToWork").click(function() {
-    		$("#mainView").hide();
-    		$("#busesView").empty();
-    		$("#busesView").show();
-    		$("#busesView").append("<h3>" + LANG.label_main + "</h3>");
-    		
-    		var now = new Date();
-    		var currentTime = now.getHours() + ":" + now.getMinutes();
-    		var workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
-    		var buses = getBuses(currentTime, true, workDay);
-    		
-    		for ( var i = 0; i < buses.length; i++) {
-//    			$("#busesView").append("<div class=\"well well-lg\">" + buses[i].time + "</div>");
-    			$("#busesView").append(createBusView(buses[i]));
-			}    		
+    		createBusesView(true);
+    	});
+    	
+    	//Handler for clicking on btnFromWork button 
+    	$("#btnFromWork").click(function() {
+    		createBusesView(false);
     	});
     	
     },
     
     // back button Event Handler
     //
-    onBackButton: function() {
-    	alert("back pressed");
-    	
+    onBackButton: function() {   	
     	if ($("#mainView").is(":visible")) { //pressing back on mainView results in killing the application
     		navigator.app.exitApp();
     	}
@@ -90,7 +82,6 @@ var app = {
     // resume event handler
     //
     onResume: function() {
-    	alert("onResume");
 		$("#busesView").hide();
 		$("#selectView").hide();
 		$("#mainView").show();
@@ -98,7 +89,36 @@ var app = {
 };
 
 /**
- * Creates a bus view well
+ * Creates the buses view
+ * @param isGoingToWork boolean
+ */
+function createBusesView(isGoingToWork) {
+	$("#mainView").hide();
+	$("#busesView").empty();
+	$("#busesView").show();
+	$("#busesView").append("<h4>" + LANG.label_main + "</h4>");
+	
+	var now = new Date();
+	var currentTime = now.getHours() + ":" + now.getMinutes();
+	var workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
+	var buses = getBuses(currentTime, isGoingToWork, workDay);
+	var isApproximate = false;
+	
+	for ( var i = 0; i < buses.length; i++) {
+		$("#busesView").append(createBusView(buses[i]));
+		if (! isApproximate && buses[i].isApproximate) {
+			isApproximate = true
+		}
+	} 
+	
+	if (isApproximate) {
+		$("#busesView").append("<h4>" + LANG.label_approximate + "</h4>");
+	}
+}
+
+/**
+ * Creates a bus view well (widget)
+ * @param bus Object
  */
 function createBusView(bus) {
 	var main = document.createElement("div");
@@ -114,13 +134,14 @@ function createBusView(bus) {
 	
 	var tdImg = document.createElement("td");
 	var img = document.createElement("img");
-	img.src = "img/mini_bus.png"
+	img.src = (bus.busType == BIG_BUS) ? "img/big_bus.png" : "img/mini_bus.png";
 	tdImg.appendChild(img);
 	tr.appendChild(tdImg);
 	
 	var tdLegend = document.createElement("td");
 	tdLegend.className = "busLegend";
-	tdLegend.innerHTML = LANG.legend_part_1 + " " + bus.startStation + " " + LANG.legend_part_2 + " " + bus.endStation;	
+	tdLegend.innerHTML = LANG.legend_part_1 + " " + bus.startStation + " " + LANG.legend_part_2 + " " + bus.endStation 
+							+ (bus.isApproximate ? " *" : "");	
 	tr.appendChild(tdLegend);
 		
 	table.appendChild(tr);
