@@ -24,6 +24,7 @@ var app = {
 			navigator.globalization.getLocaleName(
 					function (locale) { //If a valid locale exists then this will be executed
 						if (locale.value == 'ro-RO') {
+							alert("ro");
 							LANG = LANG_RO;
 						} else {
 							LANG = LANG_EN;
@@ -44,14 +45,14 @@ var app = {
     	//Set i18n for button labels
     	$("#btnToWork b").html(" " + LANG.btn_going_to_work);
     	$("#btnFromWork b").html(" " + LANG.btn_back_from_work);
-    	$("#btnTimetable b").text(" " + LANG.btn_timetable);
+    	setTimeout(function() {$("#btnTimetable b").text(" " + LANG.btn_timetable);}, 3000);    	
     	
     	//Handler for clicking on btnToWork button 
     	$("#btnToWork").click(function() {
     		$("#mainView").hide();
     		$("#busesView").empty();
     		$("#busesView").show();
-    		$("#busesView").append("<h4>" + LANG.label_main + "</h4>");
+    		$("#busesView").append("<h3>" + LANG.label_main + "</h3>");
     		
     		var now = new Date();
     		var currentTime = now.getHours() + ":" + now.getMinutes();
