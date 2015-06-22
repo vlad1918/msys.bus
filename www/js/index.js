@@ -9,6 +9,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('backbutton', this.onBackButton, true);
     },
     // deviceready Event Handler
     //
@@ -22,14 +23,14 @@ var app = {
 			navigator.globalization.getLocaleName(
 					function (locale) { //If a valid locale exists then this will be executed
 						alert('locale: ' + locale.value + '\n');
-						if (locale.value == 'ro_RO') {
+						if (locale.value == 'ro-RO') {
 							LANG = LANG_RO;
 						} else {
 							LANG = LANG_EN;
 						}
 					},
 					function () { //If a locale doesn't exists then this will be executed
-						alert('Error getting locale\n');
+						alert('Error getting locale1\n');
 						LANG = LANG_EN;
 					}
 			);
@@ -47,6 +48,7 @@ var app = {
     		$("#mainView").hide();
     		$("#busesView").empty();
     		$("#busesView").show();
+    		$("#busesView").append(LANG.label_main);
     		
     		var now = new Date();
     		var currentTime = now.getHours() + ":" + now.getMinutes();
@@ -54,13 +56,24 @@ var app = {
     		var buses = getBuses(currentTime, true, workDay);
     		
     		for ( var i = 0; i < buses.length; i++) {
-//    			$("#busesView").append();
 //    			$("#busesView").append("<div class=\"well well-lg\">" + buses[i].time + "</div>");
     			$("#busesView").append(createBusView(buses[i]));
 			}    		
     	});
     	
     },
+    
+    // back button Event Handler
+    //
+    onBackButton: function() {
+    	alert("back pressed");
+    	
+    	if ($("#busesView").is(":visible")) {
+    		$("#busesView").hide();
+    		$("#mainView").hide();
+    	}
+    }
+    
 };
 
 /**
