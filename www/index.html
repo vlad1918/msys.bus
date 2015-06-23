@@ -54,8 +54,12 @@
         <script type="text/javascript" src="js/db.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
-            app.onDeviceReady();
+        	if (navigator.userAgent.match(/(Android|IEMobile)/)) {
+				app.initialize();
+        	} else {
+        		app.onDeviceReady(); //this is the browser
+        		$(".btnBack").css("visibility", "visible");
+        	}
         </script>
     </body>
 </html>
