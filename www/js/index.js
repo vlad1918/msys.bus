@@ -118,27 +118,30 @@ var app = {
 function createBusesView(isGoingToWork, workDay) {
 	$("#mainView").hide();
 	$("#selectView").hide();
-	$("#busesView #content").empty();
+	$("#busesView .content").empty();
 	$("#busesView").show();
-	$("#busesView").append("<h4>" + LANG.label_main + "</h4>");
+	$("#busesView .content").append("<h4>" + LANG.label_main + "</h4>");
 	
-	var now = new Date();
-	var currentTime = now.getHours() + ":" + now.getMinutes();
+	var currentTime = null;
 	if (workDay == null) { //if nor provided workDay needs to be calculated 
+		var now = new Date();
 		workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
+		currentTime = now.getHours() + ":" + now.getMinutes();
+	} else {		
+		currentTime = "00:00";
 	}
 	var buses = getBuses(currentTime, isGoingToWork, workDay);
 	var isApproximate = false;
 	
 	for ( var i = 0; i < buses.length; i++) {
-		$("#busesView").append(createBusView(buses[i]));
+		$("#busesView .content").append(createBusView(buses[i]));
 		if (! isApproximate && buses[i].isApproximate) {
 			isApproximate = true
 		}
 	} 
 	
 	if (isApproximate) {
-		$("#busesView").append("<h4>" + LANG.label_approximate + "</h4>");
+		$("#busesView .content").append("<h4>" + LANG.label_approximate + "</h4>");
 	}
 }
 

@@ -6,7 +6,7 @@
         id        = "msys.bus2"
         version   = "2.0">
 
-    <name>Metro Systems Shuttle Bus</name>
+    <name>Shuttle Bus</name>
 
     <description>
 		This application targets the Metro Systems Romania employees which use the companies shuttle buses for commuting to and from work. Use this application to easily find out when the next bus leaves or arrives and what the destination will be.
@@ -72,7 +72,14 @@
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
-    <!-- Define app splash screen for each platform. 
+
+    <!-- Define app splash screen for each platform. -->
+    <gap:splash src="icon.png"       gap:platform="android" gap:qualifier="port-ldpi" />
+    <gap:splash src="icon.png"       gap:platform="android" gap:qualifier="port-mdpi" />
+    <gap:splash src="icon.png"       gap:platform="android" gap:qualifier="port-hdpi" />
+    <gap:splash src="icon.png"       gap:platform="android" gap:qualifier="port-xhdpi" />     
+	<gap:splash src="icon.png"       gap:platform="winphone" />
+	<!--     
     <gap:splash src="res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />
     <gap:splash src="res/screen/android/screen-mdpi-portrait.png"       gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"       gap:platform="android" gap:qualifier="port-hdpi" />
