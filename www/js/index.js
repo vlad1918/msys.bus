@@ -126,7 +126,7 @@ function createBusesView(isGoingToWork, workDay) {
 	if (workDay == null) { //if nor provided workDay needs to be calculated 
 		var now = new Date();
 		workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
-		currentTime = now.getHours() + ":" + now.getMinutes();
+		currentTime = now.getHourMinute();
 		alert(currentTime);
 	} else {		
 		currentTime = "00:00";
@@ -197,4 +197,32 @@ function goBack() {
 		$("#selectView").hide();
 		$("#mainView").show();
 	}
+}
+
+/**
+ * add method 
+ */
+Date.prototype.getHourMinute = function()
+{
+    var hh = this.getHours();
+    if (hh < 10)
+    {
+    	hh = "0" + hh.toString();
+    }
+    else
+    {
+    	hh = hh.toString();
+    }
+    
+    var mm = this.getMinutes();
+    if (mm < 10)
+    {
+    	mm = "0" + mm.toString();
+    }
+    else
+    {
+    	mm = mm.toString();
+    }
+    
+    return hh + ":" + mm;
 }
