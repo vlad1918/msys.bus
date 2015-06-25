@@ -127,7 +127,6 @@ function createBusesView(isGoingToWork, workDay) {
 		var now = new Date();
 		workDay = (now.getDay() == 5) ? FRIDAY : MON_THU;
 		currentTime = now.getHourMinute();
-		alert(currentTime);
 	} else {		
 		currentTime = "00:00";
 	}
