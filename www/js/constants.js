@@ -12,9 +12,9 @@ PIPERA = "PIPERA";
 
 /*** Language constants ***/ 
 LANG_RO = {
-	btn_going_to_work : "Going to work",
-	btn_back_from_work : "Back from work",
-	btn_timetable : "Whole timetable",
+	btn_going_to_work : "Merg spre serviciu",
+	btn_back_from_work : "Plec de la serviciu",
+	btn_timetable : "Orarul complet",
 	btn_to_work_mon_thu : "Spre serviciu luni-joi",
 	btn_to_work_fri : "Spre serviciu vineri",
 	btn_from_work_mon_thu : "De la serviciu luni-joi",
