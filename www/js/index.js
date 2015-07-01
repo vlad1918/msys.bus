@@ -17,7 +17,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
+    	alert('i1');
     	//Initialize the LANG array depending on the locale
     	LANG = {};
     	if (navigator != null && navigator.globalization != null) {   	
@@ -36,7 +36,7 @@ var app = {
     	} else { //Hack to make the application work on PC too
 			LANG = LANG_EN;
     	}
-    	
+    	alert('i2');
     	//Hide views which are not the mainView
     	$("#busesView").hide();
     	$("#selectView").hide();
@@ -57,7 +57,7 @@ var app = {
     	$("#btnFromWork").click(function() {
     		createBusesView(false);
     	});
-    	
+    	alert('i3');
     	//Handler for clicking on btnTimetable button 
     	$("#btnTimetable").click(function() {
     		$("#btnToWorkMonThu b").text(" " + LANG.btn_to_work_mon_thu);
@@ -92,7 +92,7 @@ var app = {
     	$(".btnBack").click(function() {
     		goBack();
     	});
-    	
+    	alert('i4');
     },
     
     // back button Event Handler
@@ -109,7 +109,7 @@ var app = {
 		$("#mainView").show();
     },
 };
-
+alert('d3');
 /**
  * Creates the buses view
  * @param isGoingToWork boolean
@@ -197,7 +197,7 @@ function goBack() {
 		$("#mainView").show();
 	}
 }
-
+alert('d4');
 /**
  * add method 
  */
@@ -225,3 +225,4 @@ Date.prototype.getHourMinute = function()
     
     return hh + ":" + mm;
 }
+alert('d5');

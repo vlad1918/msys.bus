@@ -2,7 +2,7 @@
  * Database for the buses
  */
 
-alert('db');
+alert('d1');
 
 /*** Create arrays for all available buses ***/
 
@@ -186,3 +186,5 @@ function getBuses(currentTime, goingToWork, workDay) {
 	
 	return buses;
 }
+
+alert('d2');

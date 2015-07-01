@@ -9,12 +9,6 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <title>Metro Systems Shuttle Bus</title>
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/constants.js"></script>
-		<script type="text/javascript" src="js/db.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
     </head>
     <body class="vertical-center">
     <!-- Main View -->
@@ -53,12 +47,21 @@
 		</tr>
 	</table>	
 	<!-- /Select View -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/constants.js"></script>
+	<script type="text/javascript" src="js/db.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>	
 	<script type="text/javascript">
 	 	if (navigator.userAgent.match(/(Android|IEMobile)/)) {
 			app.initialize();
+			alert('d6');
 	 	} else {
 	 		app.onDeviceReady(); //this is the browser
+	 		alert('d7');
 	 		$(".btnBack").css("visibility", "visible");
+	 		alert('d8');
 	 	}
 	 </script>
     </body>
