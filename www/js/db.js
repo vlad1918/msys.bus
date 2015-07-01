@@ -2,6 +2,8 @@
  * Database for the buses
  */
 
+alert('db');
+
 /*** Create arrays for all available buses ***/
 
 //Buses to work MON-THU
