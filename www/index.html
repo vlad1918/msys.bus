@@ -53,17 +53,14 @@
 	<script type="text/javascript" src="js/constants.js"></script>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>	
-	<script type="text/javascript">
-		alert(navigator.userAgent);
-	 	if (navigator.userAgent.match(/(Android)/)) {
-			app.initialize();
-			alert('d6');
-	 	} else {
-	 		app.onDeviceReady(); //this is the browser
-	 		alert('d7');
-	 		$(".btnBack").css("visibility", "visible");
-	 		alert('d8');
-	 	}
+	 <script type="text/javascript">
+	 var isMobileApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1 && document.URL.indexOf( 'file://' ) === -1;
+	 if ( isMobileApp ) {
+		 app.initialize(); //Phonegap init 
+	 } else {
+		 app.onDeviceReady(); //this is the browser 
+		 $(".btnBack").css("visibility", "visible");
+	 }
 	 </script>
     </body>
 </html>
