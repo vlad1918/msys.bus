@@ -53,14 +53,17 @@
 	<script type="text/javascript" src="js/constants.js"></script>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>	
-	 <script type="text/javascript">
-	 var isMobileApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1 && document.URL.indexOf( 'file://' ) === -1;
-	 if ( isMobileApp ) {
-		 app.initialize(); //Phonegap init 
-	 } else {
-		 app.onDeviceReady(); //this is the browser 
-		 $(".btnBack").css("visibility", "visible");
-	 }
-	 </script>
+	<script type="text/javascript">
+		alert(document.URL);
+		isMobileApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'file://' ) === -1;
+		if ( isMobileApp ) {
+			alert("mobile");
+		 	app.initialize(); //Phonegap init 
+		} else {
+			alert("web");
+			app.onDeviceReady(); //this is the browser 
+		 	$(".btnBack").css("visibility", "visible");
+		}
+	</script>
     </body>
 </html>
