@@ -54,13 +54,10 @@
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>	
 	<script type="text/javascript">
-		alert(document.URL);
 		isMobileApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'file://' ) === -1;
 		if ( isMobileApp ) {
-			alert("mobile");
 		 	app.initialize(); //Phonegap init 
 		} else {
-			alert("web");
 			app.onDeviceReady(); //this is the browser 
 		 	$(".btnBack").css("visibility", "visible");
 		}
