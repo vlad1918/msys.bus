@@ -36,17 +36,13 @@ html, body {
 	.busLegend {
 		width: 100%;
 		font-size: 18px;
-	}
-	
-	h4 {
-		font-size: 30px !important;
 	}	
 }
 
 @media (min-width: 769px) and (max-width: 1199px) {
 	.btn-xl {
-		padding: 28px 48px !important;
-		font-size: 30px !important;
+		padding: 38px 58px !important;
+		font-size: 42px !important;
 		border-radius: 20px !important;
 	}
 	
@@ -55,15 +51,19 @@ html, body {
 	}
 
 	.busIco {
-		padding: 10px;
-		width : 92px;
-		height: 92px;
+		padding: 5px 10px;
+		width : 100px;
+		height: 100px;
 	}
 	
 	.busLegend {
 		width: 100%;
-		font-size: 27px;
-	}	
+		font-size: 35px;
+	}
+	
+	h4 {
+		font-size: 30px !important;
+	}		
 }
 
 @media (min-width: 1200px) {
@@ -74,13 +74,13 @@ html, body {
 	}
 	
 	.busTime {
-		font-size: 90px;
+		font-size: 95px;
 	}
 	
 	.busIco {
-		padding: 20px;
-		width : 200px;
-		height: 200px;
+		padding: 5px 15px;
+		width : 190px;
+		height: 190px;
 	}
 	
 	.busLegend {
