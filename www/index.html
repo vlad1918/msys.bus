@@ -57,9 +57,11 @@
 		isMobileApp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'file://' ) === -1;
 		if ( isMobileApp ) {
 		 	app.initialize(); //Phonegap init 
+		 	alert('mobile');
 		} else {
 			app.onDeviceReady(); //this is the browser 
 		 	$(".btnBack").css("visibility", "visible");
+		 	alert('desktop');
 		}
 	</script>
     </body>

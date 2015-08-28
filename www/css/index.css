@@ -14,7 +14,7 @@ html, body {
 
 .lat {
 	margin: auto;
-	width: 65%;
+	width: 70%;
 }
 
 @media (max-width: 768px) {
@@ -36,6 +36,10 @@ html, body {
 	.busLegend {
 		width: 100%;
 		font-size: 18px;
+	}
+	
+	h4 {
+		font-size: 30px !important;
 	}	
 }
 
@@ -64,25 +68,29 @@ html, body {
 
 @media (min-width: 1200px) {
 	.btn-xl {
-		padding: 38px 78px !important;
-		font-size: 44px !important;
+		padding: 58px 98px !important;
+		font-size: 60px !important;
 		border-radius: 25px !important;
 	}
 	
 	.busTime {
-		font-size: 70px;
+		font-size: 90px;
 	}
 	
 	.busIco {
-		padding: 15px;
-		width : 112px;
-		height: 112px;
+		padding: 20px;
+		width : 200px;
+		height: 200px;
 	}
 	
 	.busLegend {
 		width: 100%;
-		font-size: 40px;
-	}	
+		font-size: 50px;
+	}
+	
+	h4 {
+		font-size: 40px !important;
+	}
 }
 
 .btnBack {
