@@ -164,6 +164,7 @@ function createBusView(bus) {
 	
 	var tdImg = document.createElement("td");
 	var img = document.createElement("img");
+	img.className = "busIco";
 	img.src = (bus.busType == BIG_BUS) ? "img/big_bus.png" : "img/mini_bus.png";
 	tdImg.appendChild(img);
 	tr.appendChild(tdImg);

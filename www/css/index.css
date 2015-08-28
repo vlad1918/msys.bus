@@ -14,29 +14,80 @@ html, body {
 
 .lat {
 	margin: auto;
-	width: 350px;
+	width: 65%;
 }
 
-.btn-xl {
-	padding: 18px 28px !important;
-	font-size: 22px !important;
-	border-radius: 8px !important;
+@media (max-width: 768px) {
+	.btn-xl {
+		padding: 18px 28px !important;
+		font-size: 22px !important;
+		border-radius: 8px !important;
+	}
+	
+	.busTime {
+		font-size: 36px;
+	}
+		
+	.busIco {
+		padding: 5px;
+		/* native width and height of 72px/72px at this resolution */
+	}
+	
+	.busLegend {
+		width: 100%;
+		font-size: 18px;
+	}	
 }
 
-.busTime {
-	padding-right: 5px;
-	font-size: 36px;
+@media (min-width: 769px) and (max-width: 1199px) {
+	.btn-xl {
+		padding: 28px 48px !important;
+		font-size: 30px !important;
+		border-radius: 20px !important;
+	}
+	
+	.busTime {
+		font-size: 52px;
+	}
+
+	.busIco {
+		padding: 10px;
+		width : 92px;
+		height: 92px;
+	}
+	
+	.busLegend {
+		width: 100%;
+		font-size: 27px;
+	}	
+}
+
+@media (min-width: 1200px) {
+	.btn-xl {
+		padding: 38px 78px !important;
+		font-size: 44px !important;
+		border-radius: 25px !important;
+	}
+	
+	.busTime {
+		font-size: 70px;
+	}
+	
+	.busIco {
+		padding: 15px;
+		width : 112px;
+		height: 112px;
+	}
+	
+	.busLegend {
+		width: 100%;
+		font-size: 40px;
+	}	
 }
 
 .btnBack {
 	visibility : hidden;
 	margin: 5px 0 20px;
-}
-
-.busLegend {
-	width: 100%;
-	padding-left: 5px;
-	font-size: 18px;
 }
 
 .marginBtmSmall {
