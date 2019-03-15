@@ -20,7 +20,7 @@ html, body {
 @media (max-width: 768px) {
 	.btn-xl {
 		padding: 18px 28px !important;
-		font-size: 22px !important;
+		font-size: 21px !important;
 		border-radius: 8px !important;
 	}
 	
