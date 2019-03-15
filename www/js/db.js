@@ -37,8 +37,8 @@ toWorkMonThu = [
   {time : "19:15", workDay : MON_THU, isApproximate : true,  busType : MINI_BUS, startStation : PIPERA, endStation : METRO_SYSTEMS},	
   {time : "19:30", workDay : MON_THU, isApproximate : true,  busType : MINI_BUS, startStation : PIPERA, endStation : METRO_SYSTEMS},
   {time : "20:00", workDay : MON_THU, isApproximate : true,  busType : MINI_BUS, startStation : PIPERA, endStation : METRO_SYSTEMS},
-  {time : "20:30", workDay : MON_THU, isApproximate : true,  busType : MINI_BUS, startStation : PIPERA, endStation : METRO_SYSTEMS},
- ];
+  
+];
 
 //Buses to work FRIDAY
 toWorkFri = [
@@ -102,8 +102,7 @@ fromWorkMonThu = [
   {time : "19:15", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA},
   {time : "19:30", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA},
   {time : "19:45", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA},
-  {time : "20:15", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA},
-  {time : "20:45", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA}
+  {time : "20:15", workDay : MON_THU, isApproximate : false, busType : MINI_BUS, startStation : METRO_SYSTEMS, endStation : PIPERA}
 ];
 
 //Buses from work FRIDAY
